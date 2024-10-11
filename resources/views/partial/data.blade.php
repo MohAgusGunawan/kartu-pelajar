@@ -5,6 +5,11 @@
 <!-- Load DataTables -->
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 <script>
+    function openModal(imageSrc) {
+        document.getElementById('modalImageContent').src = imageSrc;
+        var modal = new bootstrap.Modal(document.getElementById('modalImage'));
+        modal.show();
+    }
     // data table
     var tabel;
     // read data pengguna
@@ -58,12 +63,20 @@
                 },
                 {
                     data: 'foto',
-                    render: function (data, type, row, meta) {
-                        if (data) {
-                            return '<img src="/storage/' + data + '" width="50" height="75"/>';
+                    render: function(data, type, row, meta) {
+                            if (data !== '---') {
+                                return '<button type="button" class="btn btn-secondary btn-sm btn-icon-text" onclick="openModal(\'/storage/' +
+                                    data + '\')">Lihat Foto</button>';
+                            } else {
+                                return '---';
+                            }
                         }
-                        return '';
-                    }
+                    // render: function (data, type, row, meta) {
+                    //     if (data) {
+                    //         return '<img src="/storage/' + data + '" width="50" height="75"/>';
+                    //     }
+                    //     return '';
+                    // }
                 }
             ],
             aLengthMenu: [

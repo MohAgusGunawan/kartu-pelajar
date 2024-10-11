@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/form.css') }}">
 </head>
 <body>
@@ -35,7 +36,7 @@
       </script>
   @endif
     <div class="container">
-        <h2 class="mt-4" style="margin-top: -15px !important;">Form Input Data Siswa</h2>
+        <h4 class="mt-4" style="margin-top: -15px !important;">Form Input Data Siswa</h4>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -52,12 +53,12 @@
 
             <div class="form-group">
                 <label for="nis">NIS</label>
-                <input type="number" class="form-control" id="nis" name="nis" min="10000" max="99999" value="{{ old('nip') }}" required>
+                <input type="number" class="form-control" id="nis" name="nis" min="10000" max="99999" placeholder="5 angka" value="{{ old('nip') }}" required>
             </div>
 
             <div class="form-group">
                 <label for="nama">Nama</label>
-                <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama') }}" required>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Lengkap" value="{{ old('nama') }}" required>
             </div>
             <div class="form-group">
                 <label for="tempat_lahir">Tempat Lahir</label>
@@ -80,10 +81,10 @@
             </div>
             <div class="form-group">
                 <label for="alamat">Alamat</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" maxlength="50" value="{{ old('alamat') }}" required>
+                <input type="text" class="form-control" id="alamat" name="alamat" maxlength="50" placeholder="JL. MESIGIT II /17" value="{{ old('alamat') }}" required>
             </div>
             <div class="form-group">
-                <label for="wa">Nomor WA</label>
+                <label for="wa">Nomor HP(WA)</label>
                 <input type="number" class="form-control" id="wa" name="wa" pattern="[0-9]{10,15}" placeholder="08XXXXXXXXXXX" value="{{ old('wa') }}" required>
             </div>
             <div class="form-group">
@@ -112,9 +113,12 @@
         <div class="table-container">
             <div class="head d-flex justify-content-between align-items-center mb-2">
                 <h4 class="mb-0">Data Siswa</h4>
-                <button type="submit" class="btn btn-success btn-sm d-flex align-items-center" id="bt-download">
-                    <span id="spann" style="font-size: 1rem;">Download Laporan</span>
-                </button>
+                <form action="{{ route('form.downloadReport') }}" method="GET" class="mb-0">
+                    <button type="submit" class="btn btn-success btn-sm d-flex align-items-center" id="bt-download">
+                        <i class="fa-regular fa-file-excel p-2"></i>
+                        <span id="spann" style="font-size: 1rem;">Download Laporan</span>
+                    </button>
+                </form>
             </div>
             <div class="table-wrapper">
                 <table id="tbSiswa" class="table table-responsive table-hover">
@@ -126,7 +130,7 @@
                             <th>Tempat, Tanggal Lahir</th>
                             <th>Jenis Kelamin</th>
                             <th>Alamat</th>
-                            <th>Nomor WA</th>
+                            <th>Nomor HP</th>
                             <th>Kelas</th>
                             <th>Foto</th>
                         </tr>
@@ -136,6 +140,20 @@
         </div>
     </div>    
 </div>
+
+    <div class="modal fade" id="modalImage" tabindex="-1" aria-labelledby="modalImageLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalImageLabel">File Image</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img id="modalImageContent" src="" alt="File Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

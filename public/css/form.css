@@ -9,9 +9,10 @@ body {
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    margin-bottom: 20px;
 }
-h2 {
-    color: #007bff;
+h4 {
+    /* color: #007bff; */
     margin-bottom: 20px;
 }
 .form-group label {
@@ -62,6 +63,7 @@ h2 {
     width: 100%;
     border-collapse: collapse;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
 }
 
 #tbSiswa th,
@@ -112,32 +114,33 @@ td {
     font-size: 1rem;
 }
 
-.table-wrapper {
+.table-container {
+    width: 100%; /* Membuat kontainer menyesuaikan dengan lebar layar mobile */
+}
+
+#tbSiswa {
+    width: 100%; /* Menyesuaikan lebar tabel pada mobile */
+}
+
+/* .table-wrapper {
     width: 100%;
     overflow-x: auto;
-}
+} */
 
 @media (max-width: 768px) {
     .container {
         width: 100%;
     }
-    h2 {
+    /* h2 {
         font-size: 1.7rem;
-    }
-    .table-container h4 {
+    } */
+    /* .table-container h4 {
         font-size: 1.3rem;
-    }
+    } */
     .fa-regular.fa-file-excel {
         font-size: 0.75rem;
     }
     #spann {
         font-size: 0.8rem !important;
-    }
-    .table-container {
-        width: 100%; /* Membuat kontainer menyesuaikan dengan lebar layar mobile */
-    }
-
-    #tbSiswa {
-        width: 100%; /* Menyesuaikan lebar tabel pada mobile */
     }
 }

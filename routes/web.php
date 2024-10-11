@@ -16,3 +16,4 @@ use App\Http\Controllers\FormController;
 
 Route::get('/', [FormController::class, 'index'])->name('form.index');
 Route::resource('form', FormController::class);
+Route::get('/form/download/1', [FormController::class, 'downloadReport'])->name('form.downloadReport');

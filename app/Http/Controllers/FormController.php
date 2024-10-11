@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class FormController extends Controller
 {
@@ -111,6 +112,27 @@ class FormController extends Controller
 
         // Redirect setelah data berhasil disimpan
         return redirect()->route('form.index')->with('success', 'Data siswa berhasil ditambahkan.');
+    }
+
+    public function downloadReport()
+    {
+        $data = Siswa::all();
+        $no = 1;
+
+        $pelajarData = $data->map(function ($pelajar) use (&$no) {
+            return [
+                'NO' => $no++,
+                'NIS' => $pelajar->nis,
+                'Nama' => $pelajar->nama,
+                'Tempat, Tanggal Lahir' => $pelajar->ttl,
+                'Jenis Kelamin' => $pelajar->gender,
+                'Alamat' => $pelajar->alamat,
+                'Nomor HP (WA)' => $pelajar->wa,
+                'Kelas' => $pelajar->kelas,
+            ];
+        });
+
+        return (new FastExcel($pelajarData))->download('siswa_report.xlsx');
     }
 
     /**
