@@ -1,0 +1,143 @@
+body {
+    background-color: #f0f2f5;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #495057;
+}
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+.form-group label {
+    font-weight: bold;
+    color: #343a40;
+}
+.form-control {
+    border-radius: 5px;
+}
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+.custom-file-label::after {
+    content: "Browse";
+}
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: "Browse";
+}
+.alert {
+    margin-top: 20px;
+}
+.img-preview {
+    max-width: 100px;
+    height: auto;
+    margin-top: 10px;
+}
+
+/* Data Table */
+/* .table-container {
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+} */
+
+/* .table-wrapper {
+    overflow-x: auto;
+} */
+
+#tbSiswa {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#tbSiswa th,
+#tbSiswa td {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+#tbSiswa tbody tr:nth-child(odd) td {
+    background-color: #ffffff;
+}
+
+#tbSiswa tbody tr:nth-child(even) td {
+    background-color: #f9f9f9;
+}
+
+.dataTables_wrapper .dataTables_filter {
+    margin-bottom: 10px;
+}
+
+.dataTables_wrapper {
+    width: 100%;
+}
+
+th,
+td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.fa-solid.fa-plus {
+    color: aqua;
+    width: 35px;
+}
+.fa-solid.fa-plus:hover {
+    color: white;
+}
+.fa-solid.fa-file-excel {
+    color: green;
+    width: 35px;
+}
+.fa-solid.fa-file-excel:hover {
+    color: white;
+}
+.fa-regular.fa-file-excel {
+    font-size: 1rem;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+    h2 {
+        font-size: 1.7rem;
+    }
+    .table-container h4 {
+        font-size: 1.3rem;
+    }
+    .fa-regular.fa-file-excel {
+        font-size: 0.75rem;
+    }
+    #spann {
+        font-size: 0.8rem !important;
+    }
+    .table-container {
+        width: 100%; /* Membuat kontainer menyesuaikan dengan lebar layar mobile */
+    }
+
+    #tbSiswa {
+        width: 100%; /* Menyesuaikan lebar tabel pada mobile */
+    }
+}
